@@ -8,6 +8,9 @@ curl -s https://learn.microsoft.com/en-us/windows-server/administration/windows-
 # Sorts commands in wincmdlist.txt by decending length then replaces newline characters with a "|" for use in regex.
 cat wincmdlist.txt | sed 's/^[ \t]*//' | awk '{ print length, $0 }' | sort -n -r | cut -d" " -f2- | tr "\n" "|" | tr '[:upper:]' '[:lower:]' | sed 's/^/\\b(?<![a-zA-Z-])(/' | sed 's~|$~)(?![a-zA-Z-\.])\\b/g~' >> wincmdregex.txt
 
+#For each entry in cmdURI.txt, create a link to the description page.
+curl -s https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/windows-commands | grep -e '<li><a href="' | sed -e 's/^[^"]*"//' | sed -e 's/"[^\n]*//' | grep '^[^/]' | sed 's|^|https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/|' >> links.txt
+
 #For each entry in cmdURI.txt, curls the appropriate description page and parses out the Description section.
 while read f; do
     echo $f
@@ -48,9 +51,10 @@ while read f; do
 done < cmdURI.txt
 
 # combines all entries into a csv file for lookup and deletes the txt files used in building.
-paste -d',' wincmdlist.txt description.txt Syntax.txt Parameters.txt | sed 's/ |/\n/g' | sed 's/<code>//g' | sed 's|</code>||g' | sed 's/<strong>//g' | sed 's|</strong>||g' | sed 's|<em>||g' | sed 's|</em>||g' | sed 's|\. [A-Z][^|]*<a href.*</a>[^\.]*\.||g' | sed 's|<a href="||g' | sed 's|" data-linktype="relative-path">||g' | sed 's|</a>||g' | sed 's|<li>||g' | sed 's|</li>||g' | sed 's|<ul>||g' | sed 's|</ul>||g' | sed 's|<br>| |g' | sed 's|<br/>| |g' | sed 's|</br>||g' | sed 's|<p>| |g' >> wincmddb.csv
+paste -d',' wincmdlist.txt description.txt Syntax.txt Parameters.txt links.txt| sed 's/ |/\n/g' | sed 's/<code>//g' | sed 's|</code>||g' | sed 's/<strong>//g' | sed 's|</strong>||g' | sed 's|<em>||g' | sed 's|</em>||g' | sed 's|\. [A-Z][^|]*<a href.*</a>[^\.]*\.||g' | sed 's|<a href="||g' | sed 's|" data-linktype="relative-path">||g' | sed 's|</a>||g' | sed 's|<li>||g' | sed 's|</li>||g' | sed 's|<ul>||g' | sed 's|</ul>||g' | sed 's|<br>| |g' | sed 's|<br/>| |g' | sed 's|</br>||g' | sed 's|<p>| |g' >> wincmddb.csv
 rm description.txt
 rm Syntax.txt
 rm Parameters.txt
 rm cmdURI.txt
 rm wincmdlist.txt
+rm links.txt
