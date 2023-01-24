@@ -1,4 +1,4 @@
-# CommandBD
+# CommandDB
 Offline command reference database files and the scripts to create them.
 
 This is a project to document command line reference page content in an offline lookup file. While there are a few available for things like bash (https://git.kernel.org/pub/scm/docs/man-pages/man-pages), a quality one offline for items line Windows cmd and Powershell are difficult. The goal of this project is to target Bash, CMD, and Powershell to start, then expand into other command languages.
