@@ -12,7 +12,7 @@ The contents of each CSV file will attempt to include the following:
 - Command Parameters
 - Command Reference Link
 
-Future development will look to add use generated tags for reference.
+Future development will look to add user generated tags and categories for reference.
 
 The command references will be pulled from the following pages:
 - https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/windows-commands
