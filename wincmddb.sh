@@ -31,7 +31,7 @@ while read f; do
     n=${#g};
     if (( $n > 1 ));
     then
-        echo '"'$g'"' >> Syntax.txt;steam os
+        echo '"'$g'"' >> Syntax.txt;
     else
         echo '"No description Available"' >> Syntax.txt;
     fi;
