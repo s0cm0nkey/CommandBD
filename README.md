@@ -17,4 +17,4 @@ Future development will look to add user generated tags and categories for refer
 The command references will be pulled from the following pages:
 - https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/windows-commands
 - https://ss64.com/bash/
-- https://www.pdq.com/powershell/
+- https://ss64.com/ps/
