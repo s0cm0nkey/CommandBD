@@ -11,10 +11,12 @@ The contents of each CSV file will attempt to include the following:
 - Command Syntax
 - Command Parameters
 - Command Reference Link
-
-Future development will look to add user generated tags and categories for reference.
+- Command Category
+- Tags
 
 The command references will be pulled from the following pages:
-- https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/windows-commands
-- https://ss64.com/bash/
-- https://ss64.com/ps/
+Windows Commands - https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/windows-commands
+Linux Commands - https://ss64.com/bash/
+Powershell Commands - https://ss64.com/ps/
+
+Future development will be to include as many other command groups as possible including all the powershell modules found here: https://learn.microsoft.com/en-us/powershell/module/?view=windowsserver2022-ps
